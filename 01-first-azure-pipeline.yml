@@ -25,6 +25,12 @@ jobs:
       displayName: 'Run a multi-line script job1'
         
 - job : job2 
+  dependsOn: job1
   steps:
     - script: echo Hello, world change..job2!
       displayName: 'Run a one-line script job2'
+- job : job3
+  dependsOn: job2
+  steps:
+    - script: echo Hello, world change..job3!
+      displayName: 'Run a one-line script job3'
