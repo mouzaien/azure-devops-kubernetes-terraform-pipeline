@@ -13,8 +13,8 @@ stages:
           - bash: echo var $(PipeLineLevelVariable)
           - bash: echo var $(Build.BuildId)
           - bash: echo var $(Build.BuildNumber)
-          - bash: echo var $(Build.SourceBrancheName)
-          - bash: echo var $(Build.SourceDirectory)
+          - bash: echo var $(Build.SourceBranchName)
+          - bash: echo var $(Build.SourcesDirectory)
           - bash: ls -R  $(System.DefaultWorkingDirectory)
           - bash: echo var $(Build.ArtifactStagingDirectory)
 
