@@ -17,11 +17,23 @@ stages:
           - bash: echo var $(Build.SourcesDirectory)
           - bash: ls -R  $(System.DefaultWorkingDirectory)
           - bash: echo var $(Build.ArtifactStagingDirectory)
-
-
-      # - job: SecondJob
-      #   steps:
-      #     - bash: echo SecondJob Build !       
+          - bash: java -version
+          - bash: python --version
+          - bash: mvn -version
+          - bash: node --version
+          - bash: ls -R $(Build.ArtifactStagingDirectory)
+          - task: CopyFiles@2
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)'
+              Contents: |
+                **/*.yaml
+                **/*.tf
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          - bash: ls -R $(Build.ArtifactStagingDirectory)
+          
+  # - job: SecondJob
+  #   steps:
+  #     - bash: echo SecondJob Build !       
   # - stage: DevDeploy
   #   variables: 
   #    environment : dev
